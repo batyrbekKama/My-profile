@@ -8,224 +8,93 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"/>
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap');
-
-    :root {
-      --neon: #00f5ff;
-    }
-
-    body {
-      font-family: 'Inter', system-ui, sans-serif;
-    }
-
-    .hero-font {
-      font-family: 'Space Grotesk', sans-serif;
-    }
-
-    .glass {
-      background: rgba(255, 255, 255, 0.08);
-      backdrop-filter: blur(20px);
-      border: 1px solid rgba(255, 255, 255, 0.15);
-    }
-
-    .neon-text {
-      text-shadow: 0 0 20px var(--neon), 0 0 40px var(--neon), 0 0 60px #00bfff;
-    }
-
-    .card-hover {
-      transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
-    }
-    .card-hover:hover {
-      transform: translateY(-20px) rotate(2deg) scale(1.03);
-      box-shadow: 0 0 60px rgba(0, 245, 255, 0.4);
-    }
-
-    .nav-link {
-      position: relative;
-    }
-    .nav-link:after {
-      content: '';
-      position: absolute;
-      width: 0;
-      height: 3px;
-      bottom: -4px;
-      left: 0;
-      background: linear-gradient(to right, #00f5ff, #ff00ff);
-      transition: width 0.4s ease;
-    }
-    .nav-link:hover:after,
-    .nav-link.active:after {
-      width: 100%;
-    }
-
-    .typing {
-      overflow: hidden;
-      border-right: 4px solid #00f5ff;
-      white-space: nowrap;
-      animation: typing 3.5s steps(30, end) forwards, blink 0.8s step-end infinite;
-    }
-
-    @keyframes typing {
-      from { width: 0 }
-      to { width: 100% }
-    }
-    @keyframes blink {
-      50% { border-color: transparent }
-    }
-
-    .particle-bg {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      z-index: -1;
-      background: radial-gradient(circle at 50% 20%, rgba(0,245,255,0.15) 0%, transparent 70%);
-      animation: pulse 15s infinite alternate ease-in-out;
-    }
-
-    @keyframes pulse {
-      0% { opacity: 0.6; transform: scale(1); }
-      100% { opacity: 1; transform: scale(1.08); }
-    }
+    :root { --neon: #00f5ff; }
+    body { font-family: 'Inter', sans-serif; }
+    .hero-font { font-family: 'Space Grotesk', sans-serif; }
+    .glass { background: rgba(255,255,255,0.07); backdrop-filter: blur(24px); border: 1px solid rgba(255,255,255,0.15); }
+    .neon-text { text-shadow: 0 0 20px var(--neon), 0 0 40px var(--neon), 0 0 70px #ff00ff; }
+    .card-hover { transition: all 0.5s cubic-bezier(0.34,1.56,0.64,1); }
+    .card-hover:hover { transform: translateY(-25px) rotate(3deg) scale(1.05); box-shadow: 0 0 80px rgba(0,245,255,0.5); }
+    .nav-link { position: relative; }
+    .nav-link:after { content:''; position:absolute; width:0; height:3px; bottom:-6px; left:0; background:linear-gradient(to right,#00f5ff,#ff00ff); transition:width 0.4s; }
+    .nav-link:hover:after, .nav-link.active:after { width:100%; }
+    @keyframes float { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-20px)} }
+    .particle { position:fixed; width:4px; height:4px; background:#00f5ff; border-radius:50%; pointer-events:none; z-index:-1; animation:particleAnim 25s linear infinite; }
+    @keyframes particleAnim { to { transform:translateY(-100vh) rotate(360deg); opacity:0; } }
   </style>
 </head>
-<body class="bg-gradient-to-br from-[#0a0a2e] via-[#1a0033] to-[#2a0044] text-white overflow-x-hidden">
+<body class="bg-gradient-to-br from-[#0a0a2e] via-[#1a0033] to-[#2a0044] text-white min-h-screen overflow-x-hidden">
 
   <!-- НАВИГАЦИЯ -->
-  <nav class="fixed top-0 left-0 right-0 z-50 glass py-5">
-    <div class="max-w-7xl mx-auto px-8 flex items-center justify-between">
+  <nav class="fixed top-0 left-0 right-0 z-50 glass py-6">
+    <div class="max-w-7xl mx-auto px-8 flex justify-between items-center">
       <div class="flex items-center gap-3">
-        <div class="w-10 h-10 bg-gradient-to-br from-cyan-400 to-purple-600 rounded-2xl flex items-center justify-center text-2xl shadow-[0_0_30px_#00f5ff]">👾</div>
-        <h1 class="text-3xl font-bold hero-font tracking-tighter">БАТЫРБЕК</h1>
+        <div class="w-12 h-12 bg-gradient-to-br from-cyan-400 to-purple-600 rounded-3xl flex items-center justify-center text-3xl shadow-[0_0_40px_#00f5ff]">👾</div>
+        <span class="text-4xl font-bold hero-font tracking-tighter neon-text">БАТЫРБЕК</span>
       </div>
-
-      <div class="hidden md:flex gap-10 text-lg">
-        <a href="index.html" class="nav-link active font-medium">Обо мне</a>
-        <a href="achievements.html" class="nav-link font-medium">Достижения</a>
-        <a href="education.html" class="nav-link font-medium">Учёба</a>
-        <a href="thanks.html" class="nav-link font-medium">Спасибо</a>
+      <div class="hidden md:flex gap-12 text-xl">
+        <a href="index.html" class="nav-link active">Обо мне</a>
+        <a href="achievements.html" class="nav-link">Достижения</a>
+        <a href="education.html" class="nav-link">Учёба</a>
+        <a href="thanks.html" class="nav-link">Спасибо</a>
       </div>
-
-      <div class="flex gap-4">
-        <a href="https://t.me/твой_ник" target="_blank" class="w-11 h-11 glass rounded-2xl flex items-center justify-center hover:scale-110 transition"><i class="fa-brands fa-telegram text-2xl"></i></a>
-        <a href="https://instagram.com/твой_ник" target="_blank" class="w-11 h-11 glass rounded-2xl flex items-center justify-center hover:scale-110 transition"><i class="fa-brands fa-instagram text-2xl"></i></a>
-      </div>
+      <button onclick="toggleMusic()" class="text-3xl hover:scale-125 transition">🎵</button>
     </div>
   </nav>
 
   <!-- ГЕРОЙ -->
   <header class="min-h-screen flex items-center relative pt-20">
-    <div class="particle-bg"></div>
+    <div id="particles" class="absolute inset-0 pointer-events-none"></div>
     
     <div class="max-w-7xl mx-auto px-8 grid md:grid-cols-2 gap-16 items-center">
-      <div class="space-y-8">
-        <div class="inline-flex items-center gap-3 bg-white/10 backdrop-blur-xl px-6 py-3 rounded-3xl border border-white/20">
-          <div class="w-4 h-4 bg-green-400 rounded-full animate-pulse"></div>
-          <span class="text-sm font-medium tracking-widest">ONLINE • ПАВЛОДАР</span>
+      <div class="space-y-10">
+        <div class="inline-flex items-center gap-4 px-8 py-4 glass rounded-3xl">
+          <div class="w-5 h-5 bg-green-400 rounded-full animate-pulse"></div>
+          <span class="tracking-[4px] text-sm font-medium">ПАВЛОДАР • ONLINE</span>
         </div>
 
-        <h1 class="text-7xl md:text-8xl font-black hero-font leading-none neon-text">
+        <h1 class="text-8xl md:text-[110px] font-black hero-font leading-none neon-text">
           ПРИВЕТ,<br>Я БАТЫРБЕК
         </h1>
 
-        <div class="text-4xl text-cyan-300 font-light typing" style="width: 420px;">
-          будущий senior developer
-        </div>
+        <p class="text-5xl text-cyan-300 typing font-light">будущий senior dev</p>
 
-        <p class="max-w-md text-xl text-gray-300">
-          Студент • Программист • Мечтатель из Павлодара.<br>
-          Кодю, учусь, танцую под лоу-фай и строю будущее.
-        </p>
+        <p class="max-w-lg text-2xl text-gray-300">Кодю ночи напролёт. Люблю React, лоу-фай и когда код работает с первого раза.</p>
 
         <div class="flex gap-6">
-          <a href="achievements.html" 
-             class="px-10 py-5 bg-gradient-to-r from-cyan-400 to-purple-600 rounded-3xl font-bold text-xl shadow-2xl shadow-cyan-500/50 hover:scale-105 active:scale-95 transition-all">
-            МОИ ТРОФЕИ →
-          </a>
-          <a href="#contact" 
-             class="px-10 py-5 border-2 border-white/50 hover:border-cyan-400 rounded-3xl font-bold text-xl transition-all">
-            Написать мне
-          </a>
+          <a href="achievements.html" class="px-14 py-7 bg-gradient-to-r from-cyan-400 to-purple-600 text-2xl font-bold rounded-3xl shadow-2xl hover:scale-110 transition">СМОТРЕТЬ ТРОФЕИ →</a>
         </div>
       </div>
 
-      <!-- Аватар с анимацией -->
       <div class="relative flex justify-center">
-        <div class="relative">
-          <!-- светящееся кольцо -->
-          <div class="absolute inset-0 bg-gradient-to-br from-cyan-400 to-purple-600 rounded-[4rem] blur-3xl opacity-40 animate-spin-slow"></div>
-          
-          <img src="https://picsum.photos/id/1011/600/600" 
-               alt="Батырбек" 
-               class="w-96 h-96 object-cover rounded-[4rem] border-8 border-white/30 shadow-[0_0_80px_#00f5ff] transition-all hover:rotate-6">
-          
-          <!-- плавающий бейдж -->
-          <div class="absolute -bottom-6 -right-6 glass px-8 py-4 rounded-3xl flex items-center gap-4 shadow-2xl">
-            <span class="text-5xl">🚀</span>
-            <div>
-              <div class="text-sm font-medium text-cyan-300">Сейчас учу</div>
-              <div class="text-2xl font-bold">React + Next.js</div>
-            </div>
-          </div>
+        <div class="relative animate-float">
+          <div class="absolute inset-0 bg-gradient-to-br from-cyan-400 to-purple-600 rounded-[5rem] blur-3xl opacity-40"></div>
+          <img src="https://picsum.photos/id/1011/700/700" alt="Батырбек" 
+               class="w-[420px] h-[420px] object-cover rounded-[5rem] border-8 border-white/30 shadow-[0_0_100px_#00f5ff]">
         </div>
       </div>
-    </div>
-
-    <!-- скролл индикатор -->
-    <div class="absolute bottom-12 left-1/2 flex flex-col items-center gap-2 text-xs tracking-widest">
-      <div class="animate-bounce">↓</div>
-      <span>ПРОКРУТИ</span>
     </div>
   </header>
 
-  <!-- КРАТКО ОБО МНЕ -->
-  <section class="py-32 max-w-7xl mx-auto px-8">
-    <div class="grid md:grid-cols-3 gap-8">
-      <div class="glass rounded-3xl p-10 card-hover">
-        <i class="fa-solid fa-code text-6xl text-cyan-400 mb-6"></i>
-        <h3 class="text-3xl font-bold mb-3">Кодинг</h3>
-        <p class="text-gray-300">JS • TS • React • Python • Node.js. Пишу чистый код и люблю красивые интерфейсы.</p>
-      </div>
-      <div class="glass rounded-3xl p-10 card-hover">
-        <i class="fa-solid fa-dumbbell text-6xl text-purple-400 mb-6"></i>
-        <h3 class="text-3xl font-bold mb-3">Спорт</h3>
-        <p class="text-gray-300">Баскетбол, бег, зал. Дисциплина в спорте = дисциплина в коде.</p>
-      </div>
-      <div class="glass rounded-3xl p-10 card-hover">
-        <i class="fa-solid fa-music text-6xl text-pink-400 mb-6"></i>
-        <h3 class="text-3xl font-bold mb-3">Lo-Fi + Кофе</h3>
-        <p class="text-gray-300">Когда код не идёт — включаю лоу-фай и варю третий эспрессо.</p>
-      </div>
-    </div>
-  </section>
-
-  <footer class="py-12 text-center text-sm opacity-60">
-    © 2026 Батырбек • Сделано с ❤️ и Tailwind + чистым вайбом
-  </footer>
-
   <script>
-    // Анимация появления при скролле
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) entry.target.style.opacity = '1';
-      });
-    }, { threshold: 0.2 });
+    // Партиклы
+    function createParticles() {
+      for(let i=0; i<60; i++){
+        const p = document.createElement('div');
+        p.className = 'particle';
+        p.style.left = Math.random()*100 + 'vw';
+        p.style.animationDuration = (Math.random()*30 + 20) + 's';
+        p.style.opacity = Math.random()*0.6 + 0.3;
+        document.getElementById('particles').appendChild(p);
+      }
+    }
+    createParticles();
 
-    document.querySelectorAll('.card-hover').forEach(el => {
-      el.style.opacity = '0';
-      el.style.transition = 'all 1s';
-      observer.observe(el);
-    });
-
-    // Плавный скролл
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-      anchor.addEventListener('click', function(e) {
-        e.preventDefault();
-        document.querySelector(this.getAttribute('href')).scrollIntoView({
-          behavior: 'smooth'
-        });
-      });
-    });
+    // Музыка (lo-fi)
+    let audio = new Audio('https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3'); // замени на свой lo-fi
+    function toggleMusic() {
+      audio.paused ? audio.play() : audio.pause();
+    }
   </script>
 </body>
 </html>
