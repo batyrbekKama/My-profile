@@ -1,30 +1,38 @@
-<!-- Навигация + -->
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Батырбек | Спасибо!</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
+  <!-- style + nav -->
+</head>
+<body class="bg-gradient-to-br from-[#0a0a2e] via-[#1a0033] to-[#2a0044] text-white min-h-screen flex items-center">
 
-<section class="min-h-screen flex items-center justify-center text-center">
-  <div class="max-w-2xl">
-    <h2 class="text-8xl font-black hero-font mb-8 neon-text tracking-tighter">СПАСИБО, ЧТО ЗАШЁЛ! 🌟</h2>
+  <!-- nav с active -->
+
+  <div class="max-w-3xl mx-auto text-center px-8">
+    <h2 class="text-8xl md:text-[120px] font-black hero-font neon-text mb-8">СПАСИБО!</h2>
     
     <div class="glass rounded-3xl p-16">
-      <img src="https://media.giphy.com/media/3o7TKsQ8p4zJ1mB8jG/giphy.gif" 
-           class="mx-auto rounded-3xl shadow-2xl mb-12 w-80" alt="танцующий котик">
+      <img src="https://media.giphy.com/media/l3q2K5a4v1z9z9z9z/giphy.gif" 
+           class="mx-auto w-96 rounded-3xl shadow-2xl mb-12" alt="танцующий котик">
       
-      <p class="text-3xl mb-10">Если хочешь — пиши мне в любой момент.<br>Я всегда онлайн и рад общению!</p>
+      <p class="text-4xl mb-10">Ты дошёл до конца. Это уже круто.<br>Пиши мне в любое время — отвечу за 5 минут 😎</p>
       
-      <div class="flex justify-center gap-6 text-4xl">
-        <a href="#" class="hover:text-cyan-400">📱</a>
-        <a href="#" class="hover:text-purple-400">📸</a>
-        <a href="#" class="hover:text-pink-400">🐙</a>
+      <div class="flex justify-center gap-8 text-6xl">
+        <a href="https://t.me/твойник" class="hover:text-cyan-400 transition">📱</a>
+        <a href="https://instagram.com/твойник" class="hover:text-pink-400 transition">📸</a>
       </div>
     </div>
   </div>
-</section>
 
-<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
-<script>
-  confetti({
-    particleCount: 300,
-    spread: 120,
-    origin: { y: 0.6 }
-  });
-  setTimeout(() => confetti({particleCount:200, angle:60}), 800);
-</script>
+  <script>
+    // Конфетти каждые 2 секунды
+    setInterval(() => {
+      confetti({ particleCount: 150, spread: 100, origin: { y: 0.6 } });
+    }, 2000);
+  </script>
+</body>
+</html>
