@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Батырбек | Достижения</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"/>
+  <!-- Вставь тот же <style> блок что выше + этот -->
+  <style>
+    /* тот же стиль что в index.html */
+    .counter { font-size: 4.5rem; font-weight: 700; }
+  </style>
+</head>
+<body class="bg-gradient-to-br from-[#0a0a2e] via-[#1a0033] to-[#2a0044] text-white">
+
+  <!-- ТОТ ЖЕ НАВИГАЦИОННЫЙ БЛОК (скопируй из index.html) -->
+
+  <div class="max-w-7xl mx-auto px-8 pt-32 pb-20">
+    <h2 class="text-7xl font-black hero-font text-center mb-16 neon-text">МОИ ТРОФЕИ 🏆</h2>
+
+    <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+      <!-- Карточка 1 -->
+      <div class="glass rounded-3xl p-10 text-center card-hover">
+        <div class="counter text-cyan-400" data-count="1">0</div>
+        <p class="text-2xl font-bold mt-2">Хакатон 2025</p>
+        <p class="text-gray-400">1 место • Павлодар</p>
+      </div>
+      <!-- Карточка 2 -->
+      <div class="glass rounded-3xl p-10 text-center card-hover">
+        <div class="counter text-purple-400" data-count="4">0</div>
+        <p class="text-2xl font-bold mt-2">Проекта</p>
+        <p class="text-gray-400">В портфолио</p>
+      </div>
+      <!-- Карточка 3 -->
+      <div class="glass rounded-3xl p-10 text-center card-hover">
+        <div class="counter text-pink-400" data-count="98">0</div>
+        <p class="text-2xl font-bold mt-2">Средний балл</p>
+        <p class="text-gray-400">из 100</p>
+      </div>
+      <!-- Карточка 4 -->
+      <div class="glass rounded-3xl p-10 text-center card-hover">
+        <div class="counter text-emerald-400" data-count="250">0</div>
+        <p class="text-2xl font-bold mt-2">Часов кодинга</p>
+        <p class="text-gray-400">в 2025</p>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Анимированные счётчики
+    function animateCounter(el) {
+      const target = +el.getAttribute('data-count');
+      let count = 0;
+      const increment = Math.ceil(target / 60);
+      const timer = setInterval(() => {
+        count += increment;
+        if (count >= target) {
+          count = target;
+          clearInterval(timer);
+        }
+        el.textContent = count;
+      }, 30);
+    }
+
+    const counters = document.querySelectorAll('.counter');
+    const counterObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          animateCounter(entry.target);
+          counterObserver.unobserve(entry.target);
+        }
+      });
+    });
+
+    counters.forEach(c => counterObserver.observe(c));
+  </script>
+</body>
+</html>
