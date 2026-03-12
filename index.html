@@ -25,7 +25,7 @@
 </head>
 <body class="bg-gradient-to-br from-[#0a0a2e] via-[#1a0033] to-[#2a0044] text-white min-h-screen overflow-x-hidden">
 
-  <!-- НАВИГАЦИЯ -->
+  <!-- НАВИГАЦИЯ (одинаковая на всех страницах) -->
   <nav class="fixed top-0 left-0 right-0 z-50 glass py-6">
     <div class="max-w-7xl mx-auto px-8 flex justify-between items-center">
       <div class="flex items-center gap-3">
@@ -42,59 +42,42 @@
     </div>
   </nav>
 
-  <!-- ГЕРОЙ -->
+  <!-- ГЕРОЙ + остальной контент (как раньше, но ещё красивее) -->
   <header class="min-h-screen flex items-center relative pt-20">
     <div id="particles" class="absolute inset-0 pointer-events-none"></div>
-    
     <div class="max-w-7xl mx-auto px-8 grid md:grid-cols-2 gap-16 items-center">
       <div class="space-y-10">
         <div class="inline-flex items-center gap-4 px-8 py-4 glass rounded-3xl">
           <div class="w-5 h-5 bg-green-400 rounded-full animate-pulse"></div>
           <span class="tracking-[4px] text-sm font-medium">ПАВЛОДАР • ONLINE</span>
         </div>
-
-        <h1 class="text-8xl md:text-[110px] font-black hero-font leading-none neon-text">
-          ПРИВЕТ,<br>Я БАТЫРБЕК
-        </h1>
-
+        <h1 class="text-8xl md:text-[110px] font-black hero-font leading-none neon-text">ПРИВЕТ,<br>Я БАТЫРБЕК</h1>
         <p class="text-5xl text-cyan-300 typing font-light">будущий senior dev</p>
-
         <p class="max-w-lg text-2xl text-gray-300">Кодю ночи напролёт. Люблю React, лоу-фай и когда код работает с первого раза.</p>
-
-        <div class="flex gap-6">
-          <a href="achievements.html" class="px-14 py-7 bg-gradient-to-r from-cyan-400 to-purple-600 text-2xl font-bold rounded-3xl shadow-2xl hover:scale-110 transition">СМОТРЕТЬ ТРОФЕИ →</a>
-        </div>
+        <a href="achievements.html" class="inline-block px-14 py-7 bg-gradient-to-r from-cyan-400 to-purple-600 text-2xl font-bold rounded-3xl shadow-2xl hover:scale-110 transition">СМОТРЕТЬ ТРОФЕИ →</a>
       </div>
-
       <div class="relative flex justify-center">
         <div class="relative animate-float">
           <div class="absolute inset-0 bg-gradient-to-br from-cyan-400 to-purple-600 rounded-[5rem] blur-3xl opacity-40"></div>
-          <img src="https://picsum.photos/id/1011/700/700" alt="Батырбек" 
-               class="w-[420px] h-[420px] object-cover rounded-[5rem] border-8 border-white/30 shadow-[0_0_100px_#00f5ff]">
+          <img src="https://picsum.photos/id/1011/700/700" alt="Батырбек" class="w-[420px] h-[420px] object-cover rounded-[5rem] border-8 border-white/30 shadow-[0_0_100px_#00f5ff]">
         </div>
       </div>
     </div>
   </header>
 
   <script>
-    // Партиклы
     function createParticles() {
       for(let i=0; i<60; i++){
         const p = document.createElement('div');
         p.className = 'particle';
         p.style.left = Math.random()*100 + 'vw';
         p.style.animationDuration = (Math.random()*30 + 20) + 's';
-        p.style.opacity = Math.random()*0.6 + 0.3;
         document.getElementById('particles').appendChild(p);
       }
     }
     createParticles();
-
-    // Музыка (lo-fi)
-    let audio = new Audio('https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3'); // замени на свой lo-fi
-    function toggleMusic() {
-      audio.paused ? audio.play() : audio.pause();
-    }
+    let audio = new Audio('https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3');
+    function toggleMusic() { audio.paused ? audio.play() : audio.pause(); }
   </script>
 </body>
 </html>
