@@ -6,21 +6,46 @@
   <title>Батырбек | Спасибо!</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
-  <!-- style + nav -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"/>
+  <style>
+    /* ТОЧНО ТАКОЙ ЖЕ <style> как в index.html — скопируй полностью */
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap');
+    :root { --neon: #00f5ff; }
+    body { font-family: 'Inter', sans-serif; }
+    .hero-font { font-family: 'Space Grotesk', sans-serif; }
+    .glass { background: rgba(255,255,255,0.07); backdrop-filter: blur(24px); border: 1px solid rgba(255,255,255,0.15); }
+    .neon-text { text-shadow: 0 0 20px var(--neon), 0 0 40px var(--neon), 0 0 70px #ff00ff; }
+    .card-hover { transition: all 0.5s cubic-bezier(0.34,1.56,0.64,1); }
+    .card-hover:hover { transform: translateY(-25px) rotate(3deg) scale(1.05); box-shadow: 0 0 80px rgba(0,245,255,0.5); }
+    .nav-link { position: relative; }
+    .nav-link:after { content:''; position:absolute; width:0; height:3px; bottom:-6px; left:0; background:linear-gradient(to right,#00f5ff,#ff00ff); transition:width 0.4s; }
+    .nav-link:hover:after, .nav-link.active:after { width:100%; }
+  </style>
 </head>
 <body class="bg-gradient-to-br from-[#0a0a2e] via-[#1a0033] to-[#2a0044] text-white min-h-screen flex items-center">
 
-  <!-- nav с active -->
+  <!-- ТА ЖЕ НАВИГАЦИЯ -->
+  <nav class="fixed top-0 left-0 right-0 z-50 glass py-6">
+    <div class="max-w-7xl mx-auto px-8 flex justify-between items-center">
+      <div class="flex items-center gap-3">
+        <div class="w-12 h-12 bg-gradient-to-br from-cyan-400 to-purple-600 rounded-3xl flex items-center justify-center text-3xl shadow-[0_0_40px_#00f5ff]">👾</div>
+        <span class="text-4xl font-bold hero-font tracking-tighter neon-text">БАТЫРБЕК</span>
+      </div>
+      <div class="hidden md:flex gap-12 text-xl">
+        <a href="index.html" class="nav-link">Обо мне</a>
+        <a href="achievements.html" class="nav-link">Достижения</a>
+        <a href="education.html" class="nav-link">Учёба</a>
+        <a href="thanks.html" class="nav-link active">Спасибо</a>
+      </div>
+      <button onclick="toggleMusic()" class="text-3xl hover:scale-125 transition">🎵</button>
+    </div>
+  </nav>
 
-  <div class="max-w-3xl mx-auto text-center px-8">
+  <div class="max-w-3xl mx-auto text-center px-8 pt-20">
     <h2 class="text-8xl md:text-[120px] font-black hero-font neon-text mb-8">СПАСИБО!</h2>
-    
     <div class="glass rounded-3xl p-16">
-      <img src="https://media.giphy.com/media/l3q2K5a4v1z9z9z9z/giphy.gif" 
-           class="mx-auto w-96 rounded-3xl shadow-2xl mb-12" alt="танцующий котик">
-      
-      <p class="text-4xl mb-10">Ты дошёл до конца. Это уже круто.<br>Пиши мне в любое время — отвечу за 5 минут 😎</p>
-      
+      <img src="https://media.giphy.com/media/3o7TKsQ8p4zJ1mB8jG/giphy.gif" class="mx-auto w-96 rounded-3xl shadow-2xl mb-12" alt="танцующий котик">
+      <p class="text-4xl mb-10">Ты дошёл до конца. Это уже круто.<br>Пиши мне — отвечу за 5 минут 😎</p>
       <div class="flex justify-center gap-8 text-6xl">
         <a href="https://t.me/твойник" class="hover:text-cyan-400 transition">📱</a>
         <a href="https://instagram.com/твойник" class="hover:text-pink-400 transition">📸</a>
@@ -29,10 +54,9 @@
   </div>
 
   <script>
-    // Конфетти каждые 2 секунды
-    setInterval(() => {
-      confetti({ particleCount: 150, spread: 100, origin: { y: 0.6 } });
-    }, 2000);
+    setInterval(() => { confetti({ particleCount: 150, spread: 100, origin: { y: 0.6 } }); }, 2000);
+    let audio = new Audio('https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3');
+    function toggleMusic() { audio.paused ? audio.play() : audio.pause(); }
   </script>
 </body>
 </html>
